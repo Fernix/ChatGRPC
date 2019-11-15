@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+//Comando para generar clases
+//py -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. .\chat.proto
+
+service ChatAdmin {
+// ENvia multiples mensjes al servidor
+rpc SendMessage(stream SentMessageRequest) returns (SendMesageResponse);
+
+// Recupera múltipes mensajes del servidor a partir de una fecha
+rpc GetMesseges(GetMessagesRequest) returns (stream MessagesResponse);
+
+//crea un chat
+rpc CreateChat(CreateChatRequest) returns (ChatCreatedResponse);
+
+//recupera los chats en los que está incluido un usuairo
+rpc GetChats(GetChatsRequest) returns (stream GetChatsResponse);
+}
+
+message GetChatsRequest {
+    String idusuario = 1;
+}
+
+message GetChatsResponse {
+    Chat chat = 1;
+}
+
+message CreateChatRequest {
+repeated string idusuario = 1;
+}
+
+message CreateChatRequest {
+Chat chat = 1;
+}
+
+message GetMessagesRequest {
+date fecha = 1;
+string idchat = 2;
+}
+
+message MessagesResponse {
+Mensaje mensaje = 1;    w
+}
+
+message SendMessageRequest {
+    Mensaje mensaje = 1;
+}
+
+message SendMesageResponse {
+}
+
+
+message Chat {
+    string idchat = 1;
+    repeated Usuario usuario = 2;
+}
+
+message Usuario {
+    string idusuario = 1;
+    string username = 2;
+}
+
+
+message Mensaje {
+string contenido = 1;
+date fecha = 2;
+string idchat =3;
+string idremitente = 4;
+}
+
