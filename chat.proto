@@ -5,20 +5,24 @@ syntax = "proto3";
 
 service ChatAdmin {
 // ENvia multiples mensjes al servidor
-rpc SendMessage(stream SentMessageRequest) returns (SendMesageResponse);
+rpc SendMessage(MessageRequest) returns (stream SendMesageResponse);
 
-// Recupera múltipes mensajes del servidor a partir de una fecha
-rpc GetMesseges(GetMessagesRequest) returns (stream MessagesResponse);
+// Recupera múltipes mensajes del servidor _a partir de una fecha_
+rpc GetMesseges(stream GetMessagesRequest) returns (stream MessagesResponse);
 
 //crea un chat
-rpc CreateChat(CreateChatRequest) returns (ChatCreatedResponse);
+rpc CreateChat(CreateChatRequest) returns (CreateChatResponse);
 
 //recupera los chats en los que está incluido un usuairo
 rpc GetChats(GetChatsRequest) returns (stream GetChatsResponse);
+
+rpc UpdateMensage(MessageRequest) returns (MessagesResponse);
+
+rpc DeleteMesage(MessageRequest) returns ();
 }
 
 message GetChatsRequest {
-    String idusuario = 1;
+    string idusuario = 1;
 }
 
 message GetChatsResponse {
@@ -26,23 +30,23 @@ message GetChatsResponse {
 }
 
 message CreateChatRequest {
-repeated string idusuario = 1;
+    repeated string idusuario = 1;
 }
 
-message CreateChatRequest {
-Chat chat = 1;
+message CreateChatResponse {
+    Chat chat = 1;
 }
 
 message GetMessagesRequest {
-date fecha = 1;
-string idchat = 2;
+    Date fecha = 1;
+    string idchat = 2;
 }
 
 message MessagesResponse {
-Mensaje mensaje = 1;    w
+    Mensaje mensaje = 1;
 }
 
-message SendMessageRequest {
+message MessageRequest {
     Mensaje mensaje = 1;
 }
 
@@ -63,8 +67,13 @@ message Usuario {
 
 message Mensaje {
 string contenido = 1;
-date fecha = 2;
+Date fecha = 2;
 string idchat =3;
 string idremitente = 4;
 }
 
+message Date {
+    int32 year = 1;
+    int32 month = 2;
+    int32 day = 3;
+  }
