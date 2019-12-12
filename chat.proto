@@ -18,7 +18,7 @@ rpc GetChats(GetChatsRequest) returns (stream GetChatsResponse);
 
 rpc UpdateMensage(MessageRequest) returns (MessagesResponse);
 
-rpc DeleteMesage(MessageRequest) returns ();
+rpc DeleteMesage(MessageRequest) returns (MessagesResponse);
 }
 
 message GetChatsRequest {
@@ -30,11 +30,12 @@ message GetChatsResponse {
 }
 
 message CreateChatRequest {
-    repeated string idusuario = 1;
+    Chat chat = 1;
+    repeated usuariosEnChat usuariosenchat= 2;
 }
 
 message CreateChatResponse {
-    Chat chat = 1;
+    //Chat chat = 1;
 }
 
 message GetMessagesRequest {
@@ -56,24 +57,33 @@ message SendMesageResponse {
 
 message Chat {
     string idchat = 1;
-    repeated Usuario usuario = 2;
+    string nombre = 2;
+}
+
+message usuariosEnChat {
+    Usuario usuario = 1;
+    int64 idChat = 2;
+    int64 idchatprocedencia = 3;
 }
 
 message Usuario {
-    string idusuario = 1;
+    string correo = 1;
     string username = 2;
 }
 
 
 message Mensaje {
-string contenido = 1;
-Date fecha = 2;
-string idchat =3;
-string idremitente = 4;
+    string idmensaje = 1;
+    string mensaje = 2;
+    string estado = 3;
+    Date fecha = 4;
+    string correoremitente = 5;
+    int64 idmensajeprocedencia = 6;
+    int64 idchat = 7;
 }
 
 message Date {
-    int32 year = 1;
-    int32 month = 2;
-    int32 day = 3;
+    int64 year = 1;
+    int64 month = 2;
+    int64 day = 3;
   }
