@@ -22,8 +22,8 @@ class Usuario(peewee.Model):
         db_table = "usuario"
 
 class UsuarioEnChat(peewee.Model):
-    usuario_correo = peewee.CharField()
-    chat_idchat = peewee.ForeignKeyField(Chat)
+    correo = peewee.CharField()
+    idchat = peewee.IntegerField()
     idchatprocedencia = peewee.IntegerField()
     idusuariochat = peewee.AutoField(primary_key = True)
 
@@ -36,30 +36,38 @@ class ChatService(chat_grpc.ChatAdminServicer):
     
     def __init__(self):
         super().__init__()
-        
+
     def CreateChat(self, request, context):
 
         requestChat = request.chat
         newChat = Chat.create(nombre = requestChat.nombre)
         newChat.save()
-        print("paso 1")
         for usuario in request.usuariosenchat:
             query = Usuario.select().where( Usuario.correo == usuario.usuario)
-            print(query)
-            if query.count() == 0:
+            if query.exists():
                 us = Usuario.create(correo = usuario.usuario.correo, username = usuario.usuario.username)
                 us.save()
             else:
                 print("existe")
-            print("paso 2")
             query2 = UsuarioEnChat.select()
-            print(query2)
-            uec = UsuarioEnChat.create(usuario_correo = usuario.usuario.correo, chat_idchat = newChat.idchat, idchatprocedencia = usuario.idchatprocedencia)
+            uec = UsuarioEnChat.create(correo = usuario.usuario.correo, idchat = newChat.idchat, idchatprocedencia = usuario.idchatprocedencia)
             uec.save()
-            print("paso 3")
         response = chat.CreateChatResponse(idchatServer = newChat.idchat)
         return response
- 
+
+    def GetChats(self, request, context):
+        req = request.idusuario
+        print("inicio")
+        responseQuery = UsuarioEnChat.select(UsuarioEnChat.idchat).where(UsuarioEnChat.correo == req)
+        print("1")
+        for row in responseQuery:
+            chatR = Chat.select().where(Chat.idchat == responseQuery)
+            for rowChat in chatR:
+                print(2)
+                print(rowChat)
+                print("lel")
+                response = chat.GetChatsResponse(chat.Chat(idchat = chatR.idchat, nombre = chatR.nombre))
+                yield response
  
     def GetMesseges(self, request_iterator, context):
         for request in request_iterator:
@@ -73,6 +81,7 @@ class ChatService(chat_grpc.ChatAdminServicer):
     def GetChats(self, request, context):
         return super().GetChats(request, context)
     
+
 
 
 

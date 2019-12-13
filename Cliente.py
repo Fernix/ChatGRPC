@@ -28,6 +28,11 @@ usuarioChat2 = chat.usuariosEnChat(usuario = usuario2, idChat = 0, idchatprocede
 #users = [chat.Usuario(correo = "soy@hotmail.com", username ="fernix"),chat.Usuario(correo = "soy2@hotmail.com", username ="fernix2")]
 c = chat.Chat(idchat = 1, nombre = "test121")
 creatChat = chat.CreateChatRequest(chat = c, usuariosenchat = [usuarioChat1,usuarioChat2])
-resp = stub.CreateChat(creatChat)
-print(resp)
+#resp = stub.CreateChat(creatChat)
+#print(resp)
 
+req = chat.GetChatsRequest(idusuario = "test12111@hotmail.com")
+chats = stub.GetChats(req)
+print(chats)
+#for row in getC:
+ #   print(row)
