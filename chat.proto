@@ -27,6 +27,7 @@ message GetChatsRequest {
 
 message GetChatsResponse {
     Chat chat = 1;
+    repeated string usuarios = 2;
 }
 
 message CreateChatRequest {
@@ -58,12 +59,12 @@ message SendMesageResponse {
 message Chat {
     int64 idchat = 1;
     string nombre = 2;
+    int64 idprocedencia = 3;
 }
 
 message usuariosEnChat {
     Usuario usuario = 1;
     int64 idChat = 2;
-    int64 idchatprocedencia = 3;
 }
 
 message Usuario {

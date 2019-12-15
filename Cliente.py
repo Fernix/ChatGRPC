@@ -23,16 +23,16 @@ stub = chat_grpc.ChatAdminStub(channel)
 
 usuario1 = chat.Usuario(correo = "test12111@hotmail.com", username ="fernix")
 usuario2 = chat.Usuario(correo = "test21111@hotmail.com", username ="fernix3")
-usuarioChat1 = chat.usuariosEnChat(usuario = usuario1, idChat = 0, idchatprocedencia = 1)
-usuarioChat2 = chat.usuariosEnChat(usuario = usuario2, idChat = 0, idchatprocedencia = 10)
+usuarioChat1 = chat.usuariosEnChat(usuario = usuario1, idChat = 0)
+usuarioChat2 = chat.usuariosEnChat(usuario = usuario2, idChat = 0)
 #users = [chat.Usuario(correo = "soy@hotmail.com", username ="fernix"),chat.Usuario(correo = "soy2@hotmail.com", username ="fernix2")]
 c = chat.Chat(idchat = 1, nombre = "test121")
 creatChat = chat.CreateChatRequest(chat = c, usuariosenchat = [usuarioChat1,usuarioChat2])
 #resp = stub.CreateChat(creatChat)
 #print(resp)
 
-req = chat.GetChatsRequest(idusuario = "test12111@hotmail.com")
-chats = stub.GetChats(req)
-print(chats)
+
+for c in stub.GetChats(chat.GetChatsRequest(idusuario = "test12111@hotmail.com")):
+    print(c)
 #for row in getC:
  #   print(row)
