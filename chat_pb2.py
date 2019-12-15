@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\nchat.proto\"$\n\x0fGetChatsRequest\x12\x11\n\tidusuario\x18\x01 \x01(\t\"9\n\x10GetChatsResponse\x12\x13\n\x04\x63hat\x18\x01 \x01(\x0b\x32\x05.Chat\x12\x10\n\x08usuarios\x18\x02 \x03(\t\"Q\n\x11\x43reateChatRequest\x12\x13\n\x04\x63hat\x18\x01 \x01(\x0b\x32\x05.Chat\x12\'\n\x0eusuariosenchat\x18\x02 \x03(\x0b\x32\x0f.usuariosEnChat\"*\n\x12\x43reateChatResponse\x12\x14\n\x0cidchatServer\x18\x01 \x01(\x03\":\n\x12GetMessagesRequest\x12\x14\n\x05\x66\x65\x63ha\x18\x01 \x01(\x0b\x32\x05.Date\x12\x0e\n\x06idchat\x18\x02 \x01(\t\"-\n\x10MessagesResponse\x12\x19\n\x07mensaje\x18\x01 \x01(\x0b\x32\x08.Mensaje\"+\n\x0eMessageRequest\x12\x19\n\x07mensaje\x18\x01 \x01(\x0b\x32\x08.Mensaje\"\x14\n\x12SendMesageResponse\"=\n\x04\x43hat\x12\x0e\n\x06idchat\x18\x01 \x01(\x03\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x15\n\ridprocedencia\x18\x03 \x01(\x03\";\n\x0eusuariosEnChat\x12\x19\n\x07usuario\x18\x01 \x01(\x0b\x32\x08.Usuario\x12\x0e\n\x06idChat\x18\x02 \x01(\x03\"+\n\x07Usuario\x12\x0e\n\x06\x63orreo\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\"\x9a\x01\n\x07Mensaje\x12\x11\n\tidmensaje\x18\x01 \x01(\t\x12\x0f\n\x07mensaje\x18\x02 \x01(\t\x12\x0e\n\x06\x65stado\x18\x03 \x01(\t\x12\x14\n\x05\x66\x65\x63ha\x18\x04 \x01(\x0b\x32\x05.Date\x12\x17\n\x0f\x63orreoremitente\x18\x05 \x01(\t\x12\x1c\n\x14idmensajeprocedencia\x18\x06 \x01(\x03\x12\x0e\n\x06idchat\x18\x07 \x01(\x03\"0\n\x04\x44\x61te\x12\x0c\n\x04year\x18\x01 \x01(\x03\x12\r\n\x05month\x18\x02 \x01(\x03\x12\x0b\n\x03\x64\x61y\x18\x03 \x01(\x03\x32\xd0\x02\n\tChatAdmin\x12\x35\n\x0bSendMessage\x12\x0f.MessageRequest\x1a\x13.SendMesageResponse0\x01\x12\x39\n\x0bGetMesseges\x12\x13.GetMessagesRequest\x1a\x11.MessagesResponse(\x01\x30\x01\x12\x35\n\nCreateChat\x12\x12.CreateChatRequest\x1a\x13.CreateChatResponse\x12\x31\n\x08GetChats\x12\x10.GetChatsRequest\x1a\x11.GetChatsResponse0\x01\x12\x33\n\rUpdateMensage\x12\x0f.MessageRequest\x1a\x11.MessagesResponse\x12\x32\n\x0c\x44\x65leteMesage\x12\x0f.MessageRequest\x1a\x11.MessagesResponseb\x06proto3')
+  serialized_pb=_b('\n\nchat.proto\"$\n\x0fGetChatsRequest\x12\x11\n\tidusuario\x18\x01 \x01(\t\"9\n\x10GetChatsResponse\x12\x13\n\x04\x63hat\x18\x01 \x01(\x0b\x32\x05.Chat\x12\x10\n\x08usuarios\x18\x02 \x03(\t\"Q\n\x11\x43reateChatRequest\x12\x13\n\x04\x63hat\x18\x01 \x01(\x0b\x32\x05.Chat\x12\'\n\x0eusuariosenchat\x18\x02 \x03(\x0b\x32\x0f.usuariosEnChat\"*\n\x12\x43reateChatResponse\x12\x14\n\x0cidchatServer\x18\x01 \x01(\x03\"A\n\x12GetMessagesRequest\x12\r\n\x05\x66\x65\x63ha\x18\x01 \x01(\t\x12\x0c\n\x04hora\x18\x02 \x01(\t\x12\x0e\n\x06idchat\x18\x03 \x01(\x03\"-\n\x10MessagesResponse\x12\x19\n\x07mensaje\x18\x01 \x01(\x0b\x32\x08.Mensaje\"+\n\x0eMessageRequest\x12\x19\n\x07mensaje\x18\x01 \x01(\x0b\x32\x08.Mensaje\"\x14\n\x12SendMesageResponse\"=\n\x04\x43hat\x12\x0e\n\x06idchat\x18\x01 \x01(\x03\x12\x0e\n\x06nombre\x18\x02 \x01(\t\x12\x15\n\ridprocedencia\x18\x03 \x01(\x03\";\n\x0eusuariosEnChat\x12\x19\n\x07usuario\x18\x01 \x01(\x0b\x32\x08.Usuario\x12\x0e\n\x06idChat\x18\x02 \x01(\x03\"+\n\x07Usuario\x12\x0e\n\x06\x63orreo\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\"\xa1\x01\n\x07Mensaje\x12\x11\n\tidmensaje\x18\x01 \x01(\x03\x12\x0f\n\x07mensaje\x18\x02 \x01(\t\x12\x0e\n\x06\x65stado\x18\x03 \x01(\t\x12\r\n\x05\x66\x65\x63ha\x18\x04 \x01(\t\x12\x17\n\x0f\x63orreoremitente\x18\x05 \x01(\t\x12\x1c\n\x14idmensajeprocedencia\x18\x06 \x01(\x03\x12\x0e\n\x06idchat\x18\x07 \x01(\x03\x12\x0c\n\x04hora\x18\x08 \x01(\t\"0\n\x04\x44\x61te\x12\x0c\n\x04year\x18\x01 \x01(\x03\x12\r\n\x05month\x18\x02 \x01(\x03\x12\x0b\n\x03\x64\x61y\x18\x03 \x01(\x03\x32\xce\x02\n\tChatAdmin\x12\x33\n\x0bSendMessage\x12\x0f.MessageRequest\x1a\x13.SendMesageResponse\x12\x39\n\x0bGetMesseges\x12\x13.GetMessagesRequest\x1a\x11.MessagesResponse(\x01\x30\x01\x12\x35\n\nCreateChat\x12\x12.CreateChatRequest\x1a\x13.CreateChatResponse\x12\x31\n\x08GetChats\x12\x10.GetChatsRequest\x1a\x11.GetChatsResponse0\x01\x12\x33\n\rUpdateMensage\x12\x0f.MessageRequest\x1a\x11.MessagesResponse\x12\x32\n\x0c\x44\x65leteMesage\x12\x0f.MessageRequest\x1a\x11.MessagesResponseb\x06proto3')
 )
 
 
@@ -173,15 +173,22 @@ _GETMESSAGESREQUEST = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='fecha', full_name='GetMessagesRequest.fecha', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='idchat', full_name='GetMessagesRequest.idchat', index=1,
+      name='hora', full_name='GetMessagesRequest.hora', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='idchat', full_name='GetMessagesRequest.idchat', index=2,
+      number=3, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -198,7 +205,7 @@ _GETMESSAGESREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=238,
-  serialized_end=296,
+  serialized_end=303,
 )
 
 
@@ -228,8 +235,8 @@ _MESSAGESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=298,
-  serialized_end=343,
+  serialized_start=305,
+  serialized_end=350,
 )
 
 
@@ -259,8 +266,8 @@ _MESSAGEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=345,
-  serialized_end=388,
+  serialized_start=352,
+  serialized_end=395,
 )
 
 
@@ -283,8 +290,8 @@ _SENDMESAGERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=390,
-  serialized_end=410,
+  serialized_start=397,
+  serialized_end=417,
 )
 
 
@@ -328,8 +335,8 @@ _CHAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=412,
-  serialized_end=473,
+  serialized_start=419,
+  serialized_end=480,
 )
 
 
@@ -366,8 +373,8 @@ _USUARIOSENCHAT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=475,
-  serialized_end=534,
+  serialized_start=482,
+  serialized_end=541,
 )
 
 
@@ -404,8 +411,8 @@ _USUARIO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=536,
-  serialized_end=579,
+  serialized_start=543,
+  serialized_end=586,
 )
 
 
@@ -418,8 +425,8 @@ _MENSAJE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='idmensaje', full_name='Mensaje.idmensaje', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=1, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -439,8 +446,8 @@ _MENSAJE = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='fecha', full_name='Mensaje.fecha', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -465,6 +472,13 @@ _MENSAJE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='hora', full_name='Mensaje.hora', index=7,
+      number=8, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -477,8 +491,8 @@ _MENSAJE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=582,
-  serialized_end=736,
+  serialized_start=589,
+  serialized_end=750,
 )
 
 
@@ -522,18 +536,16 @@ _DATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=738,
-  serialized_end=786,
+  serialized_start=752,
+  serialized_end=800,
 )
 
 _GETCHATSRESPONSE.fields_by_name['chat'].message_type = _CHAT
 _CREATECHATREQUEST.fields_by_name['chat'].message_type = _CHAT
 _CREATECHATREQUEST.fields_by_name['usuariosenchat'].message_type = _USUARIOSENCHAT
-_GETMESSAGESREQUEST.fields_by_name['fecha'].message_type = _DATE
 _MESSAGESRESPONSE.fields_by_name['mensaje'].message_type = _MENSAJE
 _MESSAGEREQUEST.fields_by_name['mensaje'].message_type = _MENSAJE
 _USUARIOSENCHAT.fields_by_name['usuario'].message_type = _USUARIO
-_MENSAJE.fields_by_name['fecha'].message_type = _DATE
 DESCRIPTOR.message_types_by_name['GetChatsRequest'] = _GETCHATSREQUEST
 DESCRIPTOR.message_types_by_name['GetChatsResponse'] = _GETCHATSRESPONSE
 DESCRIPTOR.message_types_by_name['CreateChatRequest'] = _CREATECHATREQUEST
@@ -648,8 +660,8 @@ _CHATADMIN = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=789,
-  serialized_end=1125,
+  serialized_start=803,
+  serialized_end=1137,
   methods=[
   _descriptor.MethodDescriptor(
     name='SendMessage',

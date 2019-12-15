@@ -1,4 +1,5 @@
-import grpc;
+import datetime
+import grpc
 import chat_pb2 as chat
 import chat_pb2_grpc as chat_grpc
 from concurrent import futures
@@ -30,6 +31,19 @@ class UsuarioEnChat(peewee.Model):
     class Meta:
         database = database
         db_table = "usuario_en_chat"
+
+class Mensaje(peewee.Model):
+    idmensaje = peewee.AutoField(primary_key = True)
+    mensaje = peewee.CharField()
+    estado = peewee.CharField()
+    fecha = peewee.DateTimeField(default=datetime.datetime.now)
+    idmensajeprocedencia = peewee.IntegerField()
+    correo = peewee.CharField()
+    idchat = peewee.IntegerField()
+
+    class Meta:
+        database = database
+        db_table = "mensaje"
 
 
 class ChatService(chat_grpc.ChatAdminServicer):
@@ -69,15 +83,21 @@ class ChatService(chat_grpc.ChatAdminServicer):
                 #regresa cada uno de los chats
                 yield response
  
+ #devuelve los mensajes a partir de una fecha en específico
     def GetMesseges(self, request_iterator, context):
         for request in request_iterator:
-            self.mensajes = request
-            response = chat.GetChatsResponse
-            yield response
+            #covierte los el string de fecha y hora en un datetime
+            fecha = datetime.datetime.strptime(request.fecha + " " + request.hora,'%Y-%m-%d %H:%M:%S')
+            query = Mensaje.select().where(fecha >= fecha )
+            for row in query:
+                mensajeResponse = chat.Mensaje(idmensaje = row.idmensaje, mensaje = row.mensaje, estado = row.estado, fecha = row.fecha.strftime("%x"), correoremitente = row.correo, idchat = row.idchat, hora = row.fecha.strftime("%X"))
+                response = chat.MessagesResponse(mensaje = mensajeResponse)
+                yield response
 
     def SendMessage(self, request, context):
-       return
-
+        newMensaje = Mensaje.create(mensaje = request.mensaje.mensaje, correo = request.mensaje.correoremitente, idmensajeprocedencia = request.mensaje.idmensaje, idchat = request.mensaje.idchat)
+        newMensaje.save()
+        return chat.SendMesageResponse()
 
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=20))
 

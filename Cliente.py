@@ -1,6 +1,7 @@
 import grpc;
 import chat_pb2 as chat
 import chat_pb2_grpc as chat_grpc
+import datetime
 
 # open a gRPC channel
 channel = grpc.insecure_channel('localhost:50051')
@@ -32,7 +33,24 @@ creatChat = chat.CreateChatRequest(chat = c, usuariosenchat = [usuarioChat1,usua
 #print(resp)
 
 
-for c in stub.GetChats(chat.GetChatsRequest(idusuario = "test12111@hotmail.com")):
-    print(c)
+# for c in stub.GetChats(chat.GetChatsRequest(idusuario = "test12111@hotmail.com")):
+#     print(c)
 #for row in getC:
  #   print(row)
+fecha = datetime.datetime.now()
+x = datetime.datetime.now()
+print(x.strftime("%X"))
+print(x.strftime("%x"))
+mensaje = chat.Mensaje(idmensaje = 0, mensaje = "hola", estado = "enviado", fecha = x.strftime("%x"), correoremitente = "test12111@hotmail.com",idmensajeprocedencia = 1, idchat = 10, hora = x.strftime("%X"))
+#mr = stub.SendMessage(chat.MessageRequest(mensaje = mensaje))
+#print(mr)
+fecha = "2019-12-15"
+hora = "02:36:42"
+
+datei = datetime.datetime.strptime(fecha + " " + hora, '%Y-%m-%d %H:%M:%S')
+
+mensajes = iter([chat.GetMessagesRequest(fecha = fecha, hora = hora, idchat = 10)])
+
+for ms in stub.GetMesseges(mensajes):
+    print("mmm....")
+    print(ms)

@@ -16,7 +16,7 @@ class ChatAdminStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.SendMessage = channel.unary_stream(
+    self.SendMessage = channel.unary_unary(
         '/ChatAdmin/SendMessage',
         request_serializer=chat__pb2.MessageRequest.SerializeToString,
         response_deserializer=chat__pb2.SendMesageResponse.FromString,
@@ -99,7 +99,7 @@ class ChatAdminServicer(object):
 
 def add_ChatAdminServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'SendMessage': grpc.unary_stream_rpc_method_handler(
+      'SendMessage': grpc.unary_unary_rpc_method_handler(
           servicer.SendMessage,
           request_deserializer=chat__pb2.MessageRequest.FromString,
           response_serializer=chat__pb2.SendMesageResponse.SerializeToString,
